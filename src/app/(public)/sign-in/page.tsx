@@ -7,12 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner"
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 import { SigninValidation } from "@/lib/validations";
+
 
 
 const SigninForm = () => {
@@ -37,8 +39,12 @@ const SigninForm = () => {
 
         if (res.error) {
             
-        }
+            toast(res.error.message, {
+                description: "Make sure to sign up first!!",
+            })
 
+            return
+        }
 
         router.refresh()
     };

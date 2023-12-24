@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 
 import { SignupValidation } from "@/lib/validations";
@@ -30,6 +31,16 @@ const SignupForm = () => {
     });
 
     const handleSignup = async (user: z.infer<typeof SignupValidation>) => {
+        const userExists = await supabase.from('profiles').select().eq('email', user.email) ? true : false
+
+        if (userExists) {
+            toast("User Already Exists", {
+                description: "Sign in instead",
+            })
+
+            return
+        }
+
         const res = await supabase.auth.signUp({
             email: user.email,
             password: user.password,
@@ -40,10 +51,17 @@ const SignupForm = () => {
                 },
                 emailRedirectTo: `${location.origin}/api/auth/callback`,
             },
+
         })
 
-        router.push('/verify-email')
-        console.log(res);
+        if (res.error) {
+            toast("An Error Accured", {
+                description: res.error.message,
+            })
+
+            return
+        }
+        router.refresh()
 
     };
 
