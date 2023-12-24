@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 
 
 import { SigninValidation } from "@/lib/validations";
+import Link from "next/link";
 
 const SigninForm = () => {
 
@@ -29,7 +30,8 @@ const SigninForm = () => {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(handleSignin)}
-                className="flex flex-col gap-y-4 w-full">
+                className="flex flex-col gap-y-4 w-full max-w-[500px]">
+                <h3 className="text-lg lg:text-2xl">Sign in to access you dashboard</h3>
 
                 <FormField
                     control={form.control}
@@ -60,7 +62,7 @@ const SigninForm = () => {
 
                 <Button type="submit" className="w-full mt-4">Sign In</Button>
 
-
+                <p>Don't have account? <Link className="text-primary font-bold" href='/sign-up'>Sign Up</Link></p>
             </form>
         </Form>
     );

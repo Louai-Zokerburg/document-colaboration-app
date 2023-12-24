@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 
 
 import { SignupValidation } from "@/lib/validations";
+import Link from "next/link";
 
 const SignupForm = () => {
 
@@ -46,7 +47,8 @@ const SignupForm = () => {
         <Form {...form}>
             <form
                 onSubmit={form.handleSubmit(handleSignup)}
-                className="flex flex-col gap-y-4 w-full">
+                className="flex flex-col gap-y-4 w-full max-w-[500px]">
+                <h3 className="text-lg lg:text-2xl">Sign up to create an account</h3>
 
                 <FormField
                     control={form.control}
@@ -90,7 +92,7 @@ const SignupForm = () => {
 
                 <Button type="submit" className="w-full mt-4">Sign Up</Button>
 
-
+                <p>Already have an account? <Link className="text-primary font-bold" href='/sign-in'>Sign In</Link></p>
             </form>
         </Form>
     );
