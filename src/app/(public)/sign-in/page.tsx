@@ -8,11 +8,18 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 import { SigninValidation } from "@/lib/validations";
-import Link from "next/link";
+
 
 const SigninForm = () => {
+
+    const router = useRouter()
+    const supabase = createClientComponentClient()
+
 
     const form = useForm<z.infer<typeof SigninValidation>>({
         resolver: zodResolver(SigninValidation),
@@ -23,7 +30,17 @@ const SigninForm = () => {
     });
 
     const handleSignin = async (user: z.infer<typeof SigninValidation>) => {
-        console.log("sign in")
+        const res = await supabase.auth.signInWithPassword({
+            email: user.email,
+            password: user.password,
+        })
+
+        if (res.error) {
+            
+        }
+
+
+        router.refresh()
     };
 
     return (

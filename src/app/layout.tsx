@@ -9,11 +9,12 @@ export const metadata: Metadata = {
   description: 'Imma Get this job Incha alah',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body >

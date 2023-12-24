@@ -33,14 +33,18 @@ const SignupForm = () => {
         const res = await supabase.auth.signUp({
             email: user.email,
             password: user.password,
+
             options: {
+                data: {
+                    name: user.name,
+                },
                 emailRedirectTo: `${location.origin}/api/auth/callback`,
             },
         })
 
+        router.push('/verify-email')
+        console.log(res);
 
-        router.refresh()
-        console.log(res)
     };
 
     return (
