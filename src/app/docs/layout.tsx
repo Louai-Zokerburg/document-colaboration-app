@@ -14,7 +14,7 @@ const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
 
 
     if (!user) {
-        return redirect('/auth/sign-in')
+        return redirect('/sign-in')
     }
 
     return (
