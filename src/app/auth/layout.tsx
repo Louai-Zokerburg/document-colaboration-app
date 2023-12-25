@@ -1,23 +1,22 @@
-import Image from 'next/image'
 import React from 'react'
 
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import Image from 'next/image'
+
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 import auth_image from '@/assets/images/auth-image.jpg'
 
-const SigninLayout = async ({ children }: { children: React.ReactNode }) => {
-
+const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
     const cookieStore = cookies()
     const supabase = createServerComponentClient({ cookies: () => cookieStore })
 
-    const { data: { session } } = await supabase.auth.getSession()
+    const { data: { user } } = await supabase.auth.getUser()
 
-    if (session) {
-        redirect('/')
+    if (user) {
+        return redirect('/docs')
     }
-
 
     return (
         <main className='w-full h-screen flex justify-center items-center'>
@@ -29,4 +28,4 @@ const SigninLayout = async ({ children }: { children: React.ReactNode }) => {
     )
 }
 
-export default SigninLayout
+export default AuthLayout
