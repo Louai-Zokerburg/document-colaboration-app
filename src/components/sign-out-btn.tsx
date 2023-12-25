@@ -16,7 +16,7 @@ const SignOutBtn = () => {
         router.refresh()
     }
     return (
-        <Button onClick={handleSignout}>
+        <Button onClick={handleSignout} variant='destructive' className='w-full'>
             Sign out
         </Button>)
 }

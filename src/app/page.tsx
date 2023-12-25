@@ -1,7 +1,10 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
+
 import SignOutBtn from "@/components/sign-out-btn"
+import AppHeader from '@/components/app-header'
+import ThemeToggle from "@/components/theme-toggle"
 
 export default async function Home() {
 
@@ -19,9 +22,11 @@ export default async function Home() {
 
 
     return (
-        <>
+        <main className="">
+            <AppHeader />
             <h1>Home {session.user.user_metadata.name}</h1>
             <SignOutBtn />
-        </>
+            <ThemeToggle />
+        </main>
     )
 }
