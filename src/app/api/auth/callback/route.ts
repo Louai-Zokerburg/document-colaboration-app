@@ -13,7 +13,9 @@ export async function GET(request: NextRequest) {
   // if the code exists we need to exchange it with a session using the supabase sdk.
   if (code) {
     const cookieStore = cookies();
-    const supabase = createRouteHandlerClient({ cookies: () => cookieStore });
+    const supabase = createRouteHandlerClient<Database>({
+      cookies: () => cookieStore,
+    });
     await supabase.auth.exchangeCodeForSession(code);
   }
 

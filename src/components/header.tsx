@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 import { IoMdMenu } from "react-icons/io";
 
 
-const Header = ({ user }: { user: any }) => {
+const Header = ({ profile }: { profile: Profile }) => {
   return (
     <header className='h-[60px] w-full border-b-2 py-2 px-4 flex justify-between items-center'>
 
@@ -15,7 +15,7 @@ const Header = ({ user }: { user: any }) => {
         </Button>
         <Logo />
       </div>
-      <UserProfileBtn user={user} />
+      <UserProfileBtn profile={profile} />
     </header>
   )
 }

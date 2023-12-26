@@ -12,7 +12,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 const AuthWithGithubBtn = () => {
     const [isLoading, setIsLoading] = useState(false)
 
-    const supabase = createClientComponentClient()
+    const supabase = createClientComponentClient<Database>()
 
     const handleAuthWithGithub = async () => {
 

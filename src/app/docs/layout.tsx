@@ -9,19 +9,26 @@ import Sidebar from '@/components/sidebar'
 
 const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
     const cookieStore = cookies()
-    const supabase = createServerComponentClient({ cookies: () => cookieStore })
+    const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
 
     const { data: { user } } = await supabase.auth.getUser()
 
 
     if (!user) {
-        return redirect('/sign-in')
+        return redirect('/auth/sign-in')
     }
+
+    const { data: profiles } = await supabase.from('profiles').select()
+    const { data: docs } = await supabase.from('docs').select()
+
+    const currentProfile: Profile = profiles?.find(profile => profile.id === user?.id)    
+
+
 
     return (
         <main>
-            <Header user={user} />
-            <Sidebar />
+            <Header profile={currentProfile} />
+            <Sidebar docs={docs} currentProfile={currentProfile}/>
             {children}
         </main>
     )
