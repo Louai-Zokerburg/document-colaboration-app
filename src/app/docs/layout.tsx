@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 import Header from '@/components/header'
+import Sidebar from '@/components/sidebar'
 
 const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
     const cookieStore = cookies()
@@ -20,6 +21,7 @@ const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
     return (
         <main>
             <Header user={user} />
+            <Sidebar />
             {children}
         </main>
     )
