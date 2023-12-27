@@ -1,7 +1,7 @@
 // import { TextEditor } from '@/components/editor/TextEditor'
 import React from 'react'
 
-import { Room } from './Room'
+// import { Room } from './Room'
 
 const page = ({ params }: { params: { doc_id: string } }) => {
     return (
