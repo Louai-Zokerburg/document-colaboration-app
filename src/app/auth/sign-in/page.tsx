@@ -53,7 +53,7 @@ const SigninForm = () => {
             return
         }
 
-        router.refresh()
+        router.push('/docs')
     };
 
     return (

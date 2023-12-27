@@ -66,7 +66,7 @@ const SignupForm = () => {
 
         setIsLoading(false)
 
-        router.refresh()
+        // router.refresh()
         router.push('/email-verification')
     };
 
