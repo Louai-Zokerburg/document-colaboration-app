@@ -109,7 +109,7 @@ const SigninForm = () => {
             </div>
 
             <AuthWithGithubBtn /> */}
-            <p>Don't have account? <Link className="text-primary font-bold mt-2" href='/auth/sign-up'>Sign Up</Link></p>
+            <p>Dont have account? <Link className="text-primary font-bold mt-2" href='/auth/sign-up'>Sign Up</Link></p>
         </section>
 
     );
