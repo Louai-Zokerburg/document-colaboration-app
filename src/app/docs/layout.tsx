@@ -27,7 +27,7 @@ const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
 
     return (
         <main>
-            <Header profile={currentProfile} />
+            <Header profile={currentProfile} docs={docs} />
             <Sidebar docs={docs} currentProfile={currentProfile}/>
             {children}
         </main>

@@ -9,15 +9,15 @@ import auth_image from '@/assets/images/auth-image.jpg'
 
 
 const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
-    const cookieStore = cookies()
-    const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
+    // const cookieStore = cookies()
+    // const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
 
-    const { data: { user } } = await supabase.auth.getUser()
+    // const { data: { user } } = await supabase.auth.getUser()
 
 
-    if (user) {
-        return redirect('/docs')
-    }
+    // if (user) {
+    //     return redirect('/docs')
+    // }
 
     return (
         <main className='w-full h-screen flex justify-center items-center'>

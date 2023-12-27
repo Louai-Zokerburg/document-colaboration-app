@@ -72,7 +72,7 @@ const SignupForm = () => {
 
     return (
         <section
-            className="flex flex-col gap-y-2 w-full max-w-[500px]">
+            className="flex flex-col gap-y-4 w-full max-w-[500px]">
             <h3 className="text-lg lg:text-2xl">Sign up to create an account</h3>
 
 
@@ -123,7 +123,7 @@ const SignupForm = () => {
                         )}
                     />
 
-                    <Button type="submit" className="w-full mt-4 gap-x-4">
+                    <Button type="submit" className="w-full mt-6 gap-x-4">
                         {isLoading && <Loader />}
                         Sign Up With Email
                     </Button>
@@ -131,15 +131,15 @@ const SignupForm = () => {
                 </form>
             </Form>
 
-            <div className="w-full flex justify-between items-center my-2">
+            {/* <div className="w-full flex justify-between items-center my-2">
                 <span className="h-[2px] bg-accent w-[40%]"></span>
                 <p>OR</p>
                 <span className="h-[2px] bg-accent w-[40%]"></span>
             </div>
 
-            <AuthWithGithubBtn />
+            <AuthWithGithubBtn /> */}
 
-            <p>Already have an account? <Link className="text-primary font-bold" href='/auth/sign-in'>Sign In</Link></p>
+            <p>Already have an account? <Link className="text-primary font-bold mt-2" href='/auth/sign-in'>Sign In</Link></p>
         </section>
     );
 };
