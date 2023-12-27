@@ -13,3 +13,9 @@ export const SigninValidation = z.object({
   email: z.string().email(),
   password: z.string().min(8, { message: "Password must be at least 8 characters." }),
 });
+
+export const CreateDocValidation = z.object({
+  creator_id: z.string(),
+  doc_title: z.string().min(3, { message: "Documet title must be at lease 3 chars" }),
+  is_public: z.boolean(),
+});

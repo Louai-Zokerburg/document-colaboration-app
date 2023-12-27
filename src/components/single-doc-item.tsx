@@ -1,9 +1,10 @@
 import React from 'react'
 import { MdOutlineTextFields } from 'react-icons/md'
-import { Button } from './ui/button'
 
-import { IoIosMore } from 'react-icons/io'
 import Link from 'next/link'
+import EditDocDialog from './dialogs/edit-doc-dialog'
+import { Button } from './ui/button'
+import { IoIosMore } from 'react-icons/io'
 
 const SingleDocItem = ({ doc, showActions }: { doc: any, showActions: boolean }) => {
     return (
@@ -38,9 +39,15 @@ const SingleDocItem = ({ doc, showActions }: { doc: any, showActions: boolean })
                     //     </PopoverContent>
                     // </Popover>
 
-                    <Button size='icon' variant='ghost'>
-                        <IoIosMore size={18} />
-                    </Button>
+                    // <Button size='icon' variant='ghost'>
+                    //     <IoIosMore size={18} />
+                    // </Button>
+
+                    <EditDocDialog>
+                        <Button size='icon' variant='ghost'>
+                            <IoIosMore size={18} />
+                        </Button>
+                    </EditDocDialog>
 
                 )
             }

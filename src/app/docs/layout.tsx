@@ -24,7 +24,7 @@ const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
     const currentProfile: Profile = profiles?.find(profile => profile.id === user?.id)    
 
 
-
+ 
     return (
         <main>
             <Header profile={currentProfile} docs={docs} />
