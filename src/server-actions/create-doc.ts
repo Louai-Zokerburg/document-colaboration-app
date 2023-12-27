@@ -6,15 +6,11 @@ import { cookies } from 'next/headers';
 
 export async function createDocument(state: any, formData: FormData) {
   const creatorId = formData.get('creator_id');
-
   const title = formData.get('doc_title');
   const isPublic = formData.get('public');
 
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
 
   const { data, error } = await supabase.from('docs').insert([
     {

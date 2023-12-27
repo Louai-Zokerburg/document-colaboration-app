@@ -43,7 +43,7 @@ const SingleDocItem = ({ doc, showActions }: { doc: any, showActions: boolean })
                     //     <IoIosMore size={18} />
                     // </Button>
 
-                    <EditDocDialog>
+                    <EditDocDialog doc={doc}>
                         <Button size='icon' variant='ghost'>
                             <IoIosMore size={18} />
                         </Button>
