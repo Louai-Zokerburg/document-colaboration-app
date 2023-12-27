@@ -16,7 +16,7 @@ const UserProfileBtn = ({ profile }: { profile: Profile }) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
-                <span className="w-10 h-10  cursor-pointer bg-primary text-primary-foreground flex justify-center items-center font-bold rounded-full">
+                <span className="w-10 h-10 box-border cursor-pointer bg-primary text-primary-foreground flex justify-center items-center font-bold rounded-full">
                     {profile.name.toUpperCase().slice(0, 2)}
                 </span>
             </PopoverTrigger>

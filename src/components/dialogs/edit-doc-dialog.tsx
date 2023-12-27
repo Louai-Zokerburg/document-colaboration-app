@@ -13,30 +13,37 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { deleteDocument } from "@/server-actions/delete-doc"
+import { updateDocument } from "@/server-actions/update-doc"
 import { Checkbox } from "../ui/checkbox"
 
 import { useFormStatus, useFormState } from "react-dom"
 
 import React, { useEffect, useState } from "react"
-import { FaPen, FaTrash } from "react-icons/fa"
+import { FaPen, FaTrash, FaTruckLoading } from "react-icons/fa"
+import Loader from "../Loader"
 
 const EditDocDilog = ({ children, doc }: { children: React.ReactNode, doc: any }) => {
     const [open, setOpen] = useState(false);
     const [deleteState, deleFormAction] = useFormState(deleteDocument, null)
+    const [updateState, updateFormAction] = useFormState(updateDocument, null)
 
     useEffect(() => {
 
-        console.log(deleteState);
-        
+
 
         if (deleteState?.message === 'Success') {
             setOpen(false)
         }
+        if (updateState?.message === 'Success') {
+            setOpen(false)
+        }
 
-    }, [deleteState])
+        console.log(updateState);
 
-    console.log(doc);
-    
+
+    }, [deleteState, updateState])
+
+
 
     return (
         <Dialog open={open} onOpenChange={setOpen}>
@@ -45,28 +52,26 @@ const EditDocDilog = ({ children, doc }: { children: React.ReactNode, doc: any }
             </DialogTrigger>
             <DialogContent className="max-w-[400px] lg:max-w-[450px]">
                 <DialogHeader>
-                    <div className="flex justify-between items-center mt-4">
 
-                        <DialogTitle>Edit Document</DialogTitle>
-                        <form action={deleFormAction}>
-                            <input type="hidden" name='doc_id' defaultValue={doc.doc_id} />
-                            <DeleteFormSubmitBtn />
-                        </form>
-                    </div>
+                    <DialogTitle>Edit Document</DialogTitle>
+
                     <DialogDescription>
                         Edit you document information and save changes
                     </DialogDescription>
                 </DialogHeader>
-                <form action={deleFormAction}>
+                <form action={updateFormAction}>
                     <div className="flex justify-start items-start flex-col w-full gap-y-6 mt-4">
-                        
-                        <div className="flex justify-start items-start flex-col gap-y-2 w-full">
+
+                        <input type="hidden" name="creator_id" value={doc.creator_id} />
+                        <input type="hidden" name="doc_id" value={doc.doc_id} />
+
+                        {/* <div className="flex justify-start items-start flex-col gap-y-2 w-full">
                             <Label htmlFor="doc_id" className="text-right">
                                 Document ID
                             </Label>
-                            <Input disabled id="doc_id" name="doc_id" defaultValue={doc.doc_id} className="w-full" />
-                            
-                        </div>
+                            <Input disabled id="doc_id" name="doc_id" value={doc.doc_id} className="w-full" />
+
+                        </div> */}
                         <div className="flex justify-start items-start flex-col gap-y-2 w-full">
                             <Label htmlFor="doc_title" className="text-right">
                                 Document Title
@@ -80,15 +85,21 @@ const EditDocDilog = ({ children, doc }: { children: React.ReactNode, doc: any }
                             />
                         </div>
                         <div className="flex justify-start items-center gap-x-2">
-                            <Checkbox id='public' name='public' checked={doc.public} />
+                            <Checkbox id='public' name='public' defaultChecked={doc.public} />
                             <Label htmlFor="public" className="text-right">
                                 is Public
                             </Label>
                         </div>
                     </div>
+
                     <DialogFooter>
+
                         <SubmitBtn />
                     </DialogFooter>
+                </form>
+                <form action={deleFormAction}>
+                    <input type="hidden" name='doc_id' defaultValue={doc.doc_id} />
+                    <DeleteFormSubmitBtn />
                 </form>
             </DialogContent>
         </Dialog>
@@ -102,8 +113,8 @@ const SubmitBtn = () => {
     const { pending } = useFormStatus()
 
     return (
-        <Button disabled={pending} type="submit">
-            {pending ? "Creating...." : "New Document"}
+        <Button disabled={pending} type="submit" className="w-full mt-4">
+            {pending ? "Updating...." : "Update Document"}
         </Button>
     )
 }
@@ -112,11 +123,11 @@ const DeleteFormSubmitBtn = () => {
     const { pending } = useFormStatus()
 
     return (
-        <Button type="submit" size='icon' variant='outline'>
+        <Button disabled={pending} type="submit" variant='destructive' className="w-full mt-1">
             {
                 pending ?
-                    <FaPen />
-                    : <FaTrash />
+                    "Deleting..."
+                    : "Delete"
             }
         </Button>
     )

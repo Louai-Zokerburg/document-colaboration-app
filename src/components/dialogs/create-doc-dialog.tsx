@@ -80,7 +80,7 @@ const SubmitBtn = () => {
     const { pending } = useFormStatus()
 
     return (
-        <Button disabled={pending} type="submit">
+        <Button disabled={pending} type="submit" className="w-full mt-4">
             {pending ? "Creating...." : "New Document"}
         </Button>
     )

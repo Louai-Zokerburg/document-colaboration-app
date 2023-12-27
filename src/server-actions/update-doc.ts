@@ -1,40 +1,40 @@
-// 'use server'
-// import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
-// import { revalidatePath } from "next/cache"
-// import { cookies } from "next/headers"
+'use server';
 
-// export async function updateWatch(formData){
-//     const id = formData.get('id')
-//     const model = formData.get('model')
-//     const brand = formData.get('brand')
-//     const referenceNumber = formData.get('referenceNumber')
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { revalidatePath } from 'next/cache';
+import { cookies } from 'next/headers';
 
-//     const cookieStore = cookies();
-//     const supabase = createServerComponentClient({cookies: () => cookieStore})
-//     const {data: {session}} = await supabase.auth.getSession();
-//     const user = session?.user
+export async function updateDocument(state: any, formData: FormData) {
+  const documentId = formData.get('doc_id');
+  const creatorId = formData.get('creator_id');
+  const title = formData.get('doc_title');
+  const isPublic = formData.get('public');
 
-//     if (!user){
-//         console.error('User is not authenticated within updateWatch server action')
-//         return;
-//     }
+  console.log("doc_id: " + documentId);
+  console.log("creatorId: " + creatorId);
+  console.log("title: " + title);
+  console.log("isPublic: " + isPublic);
+  
 
-//     const {data, error} = await supabase
-//         .from('watches')
-//         .update(
-//             {
-//                 model,
-//                 brand,
-//                 reference_number: referenceNumber,
-//             }
-//         ).match({id, user_id: user.id})
+  const cookieStore = cookies();
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
-//     if (error){
-//         console.error('Error updating data', error)
-//         return;
-//     }
+  const {data, error} = await supabase
+        .from('docs')
+        .update(
+            {
+                creator_id: creatorId,
+                title,
+                content: '',
+                public: isPublic,
+            }
+        ).match({doc_id: documentId})
 
-//     revalidatePath('/watch-list')
+  if (error) {
+    return { error: error.message };
+  }
 
-//     return {message: 'Success'}
-// }
+  revalidatePath('/docs');
+
+  return { message: 'Success' };
+}

@@ -9,9 +9,9 @@ const DocsList = ({ docs, profileId }: { docs: any, profileId: string }) => {
     return (
         <ScrollArea className='w-full h-[600px] flex flex-col justify-start items-start list-none mt-2'>
             {
-                docs.map((doc: any) => (
+                docs.length > 0 ? docs.map((doc: any) => (
                     <SingleDocItem key={doc.doc_id} doc={doc} showActions={doc.creator_id === profileId} />
-                ))
+                )) : <p className='text-center mt-8 text-muted-foreground'>No docs to display :(</p>
             }
 
         </ScrollArea>
