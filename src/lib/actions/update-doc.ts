@@ -9,11 +9,6 @@ export async function updateDocument(state: any, formData: FormData) {
   const creatorId = formData.get('creator_id');
   const title = formData.get('doc_title');
   const isPublic = formData.get('public');
-
-  console.log("doc_id: " + documentId);
-  console.log("creatorId: " + creatorId);
-  console.log("title: " + title);
-  console.log("isPublic: " + isPublic);
   
 
   const cookieStore = cookies();

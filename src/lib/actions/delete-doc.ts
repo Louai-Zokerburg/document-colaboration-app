@@ -5,10 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 
 export async function deleteDocument(state: any, formData: FormData) {
-  const documentId = formData.get('doc_id');
-
-  console.log(documentId);
-  
+  const documentId = formData.get('doc_id');  
 
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });

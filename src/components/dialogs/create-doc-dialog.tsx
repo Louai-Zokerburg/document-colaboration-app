@@ -1,34 +1,35 @@
 'use client'
+import React, { useEffect, useState } from "react"
+import { useFormStatus, useFormState } from "react-dom"
 
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { createDocument } from "@/server-actions/create-doc"
 import { Checkbox } from "../ui/checkbox"
 
-import { useFormStatus, useFormState } from "react-dom"
+import { createDocument } from "@/lib/actions/create-doc"
 
-import React, { useEffect, useState } from "react"
+type PropTypes = {
+    children: React.ReactNode,
+    creator_id: string | undefined
+}
 
-const CreateDocDialog = ({ children, creator_id }: { children: React.ReactNode, creator_id: string }) => {
+const CreateDocDialog = ({ children, creator_id }: PropTypes) => {
     const [open, setOpen] = useState(false);
-    const [state, formAction] = useFormState(createDocument, null)
+    const [state, createFormAction] = useFormState(createDocument, null)
 
     useEffect(() => {
-
         if (state?.message === 'Success') {
             setOpen(false)
         }
-
     }, [state])
 
     return (
@@ -40,12 +41,17 @@ const CreateDocDialog = ({ children, creator_id }: { children: React.ReactNode, 
                 <DialogHeader>
                     <DialogTitle>Create New Document</DialogTitle>
                     <DialogDescription>
-                        Add you document information and save changes
+                        Add you document to your workspace
                     </DialogDescription>
                 </DialogHeader>
-                <form action={formAction}>
+                <form action={createFormAction}>
                     <div className="flex justify-start items-start flex-col w-full gap-y-6 mt-4">
+
+                        {/*  input contains the needed creator id for the creation of the document */}
                         <Input type="hidden" name="creator_id" defaultValue={creator_id} />
+
+
+                        {/*  Dcoument Title Input */}
                         <div className="flex justify-start items-start flex-col gap-y-2 w-full">
                             <Label htmlFor="doc_title" className="text-right">
                                 Document Title
@@ -57,6 +63,8 @@ const CreateDocDialog = ({ children, creator_id }: { children: React.ReactNode, 
                                 className="w-full"
                             />
                         </div>
+
+                        {/*  is public checkbox */}
                         <div className="flex justify-start items-center gap-x-2">
                             <Checkbox id='public' name='public' defaultValue='off' />
                             <Label htmlFor="public" className="text-right">
@@ -64,9 +72,9 @@ const CreateDocDialog = ({ children, creator_id }: { children: React.ReactNode, 
                             </Label>
                         </div>
                     </div>
-                    <DialogFooter>
-                        <SubmitBtn />
-                    </DialogFooter>
+
+                    {/* Submit Button */}
+                    <SubmitBtn />
                 </form>
             </DialogContent>
         </Dialog>
@@ -75,10 +83,10 @@ const CreateDocDialog = ({ children, creator_id }: { children: React.ReactNode, 
 
 export default CreateDocDialog
 
-
+// Submit button declaration
 const SubmitBtn = () => {
     const { pending } = useFormStatus()
-
+    
     return (
         <Button disabled={pending} type="submit" className="w-full mt-4">
             {pending ? "Creating...." : "New Document"}

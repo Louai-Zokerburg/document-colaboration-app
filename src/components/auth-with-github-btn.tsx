@@ -25,6 +25,7 @@ const AuthWithGithubBtn = () => {
 
         if (res.error) {
             setIsLoading(false)
+            
         }
 
         setIsLoading(false)
