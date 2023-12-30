@@ -6,7 +6,7 @@ import { Room } from '@/components/Room'
 const page = ({ params }: { params: { doc_id: string } }) => {
     return (
         <section className='ml-0 h-screen lg:ml-[300px] pt-[60px] flex justify-center items-center bg-secondary'>
-            <Room>
+            <Room roomId={params.doc_id || "Any id"}>
                 <TextEditor />
             </Room>
             {/* <h1>Document: {params.doc_id}</h1> */}

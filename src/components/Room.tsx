@@ -6,8 +6,11 @@ import { useSearchParams } from "next/navigation";
 import { ClientSideSuspense } from "@liveblocks/react";
 import { Loading } from "@/components/loading";
 
-export function Room({ children }: { children: ReactNode }) {
-  const roomId = useOverrideRoomId("nextjs-yjs-tiptap-advanced");
+export function Room({ children, roomId }: { children: ReactNode, roomId: string }) {
+  // const roomId = useOverrideRoomId("nextjs-yjs-tiptap-advanced");
+
+  console.log('roomId', roomId);
+  
 
   return (
     <RoomProvider

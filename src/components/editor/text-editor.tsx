@@ -130,12 +130,12 @@ function TiptapEditor({ doc, provider }: EditorProps) {
   });
 
   return (
-    <div className='flex flex-col bg-secondary container'>
-      <div className='flex justify-between items-center bg-background border-b-2 px-4 py-2 z-10'>
+    <div className='flex flex-col bg-secondary h-full w-full bg-blue-700'>
+      <div className='flex w-full justify-between items-center bg-background border-b-2 px-4 py-2 z-10'>
         {editor && <Toolbar editor={editor} />}
         <Avatars />
       </div>
-      <div className='flex-1 overflow-y-scroll'>
+      <div className='flex-1 overflow-y-scroll px-4'>
         {editor && <SelectionMenu editor={editor} />}
         <EditorContent editor={editor} className='relative min-h-full w-full max-w-[800px] my-4 mx-auto border bg-background rounded-lg' />
       </div>

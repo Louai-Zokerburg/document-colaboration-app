@@ -4,7 +4,6 @@ import { ToolbarBlock } from "./toolbar-block";
 import { ToolbarCommands } from "./toolbar-commands";
 import { ToolbarHeadings } from "./toolbar-headings";
 import { ToolbarInline } from "./toolbar-inline";
-import ThemeToggle from "@/components/editor/theme-toggle-v2";
 
 type Props = {
   editor: Editor;
@@ -13,9 +12,6 @@ type Props = {
 export function Toolbar({ editor }: Props) {
   return (
     <div className='flex items-center flex-wrap flex-shrink gap-1'>
-      <div className='toolbarSection'>
-        <ThemeToggle />
-      </div>
       <div className='toolbarSection'>
         <ToolbarCommands editor={editor} />
       </div>

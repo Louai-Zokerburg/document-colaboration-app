@@ -2,6 +2,7 @@ import React from 'react'
 import UserProfileBtn from './user-profile-btn'
 import Logo from './logo'
 import MobileSidebar from './mobile-side-bar';
+// import { Avatars } from './avatars';
 
 const Header = () => {
 
@@ -12,7 +13,13 @@ const Header = () => {
         <MobileSidebar />
         <Logo />
       </div>
+
+      <div>
+
+        {/* <Avatars  /> */}
+
       <UserProfileBtn  />
+      </div>
     </header>
   )
 }
