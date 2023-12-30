@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/sonner"
 
 
 export const metadata: Metadata = {
-  title: 'Document Colaboration',
+  title: 'LouDocs: Document Colaboration',
   description: 'Imma Get this job Incha alah',
 }
 

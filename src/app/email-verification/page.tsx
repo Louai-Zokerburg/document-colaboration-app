@@ -1,6 +1,6 @@
 import React from 'react'
-
 import { Lock } from 'lucide-react'
+
 const page = () => {
     return (
         <main className='w-full h-screen flex justify-center items-center flex-col gap-y-6'>

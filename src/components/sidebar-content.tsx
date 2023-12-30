@@ -9,13 +9,21 @@ import { Button } from '@/components/ui/button'
 import CreateDocDialog from "./dialogs/create-doc-dialog"
 import DocsList from './docs-list'
 
+import { Docuemnt } from "@/global";
+
+import { getDocsFromServer, getUserFromServer } from "@/lib/fetchers"
+
 import { FaPlus } from 'react-icons/fa'
 
-const SidebarContent = ({ docs, currentProfile }: { docs: any, currentProfile: any }) => {
-    const myDocs = docs.filter((doc: any) => doc.creator_id === currentProfile.id)
+const SidebarContent = async () => {
+    const docs = await getDocsFromServer()
+    const user = await getUserFromServer()
+
+    const myDocs = docs.filter((doc: Docuemnt) => doc.creator_id === user?.id)
+
     return (
         <>
-            <CreateDocDialog creator_id={currentProfile.id}>
+            <CreateDocDialog creator_id={user?.id}>
                 <Button variant='ghost' className='flex justify-start gap-x-4 w-full'>
                     <FaPlus />
                     New Doc
@@ -28,10 +36,10 @@ const SidebarContent = ({ docs, currentProfile }: { docs: any, currentProfile: a
                     <TabsTrigger value="my_docs">My Docs</TabsTrigger>
                 </TabsList>
                 <TabsContent value="all_docs">
-                    <DocsList docs={docs} profileId={currentProfile.id} />
+                    <DocsList docs={docs} userId={user?.id} />
                 </TabsContent>
                 <TabsContent value="my_docs">
-                    <DocsList docs={myDocs} profileId={currentProfile.id} />
+                    <DocsList docs={myDocs} userId={user?.id} />
                 </TabsContent>
             </Tabs>
         </>

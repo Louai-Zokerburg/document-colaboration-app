@@ -1,34 +1,22 @@
 import React from 'react'
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
 import Header from '@/components/header'
 import Sidebar from '@/components/sidebar'
 
+import { getSessionFromServer } from '@/lib/fetchers'
+
 const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
-    const cookieStore = cookies()
-    const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
+    const session = await getSessionFromServer()
 
-    const { data: { user } } = await supabase.auth.getUser()
-
-
-    if (!user) {
+    if (!session) {
         return redirect('/auth/sign-in')
     }
 
-    const { data: profiles } = await supabase.from('profiles').select()
-    const { data: docs } = await supabase.from('docs').select()
-
-    const currentProfile: Profile = profiles?.find(profile => profile.id === user?.id)    
-
-
- 
     return (
         <main>
-            <Header profile={currentProfile} docs={docs} />
-            <Sidebar docs={docs} currentProfile={currentProfile}/>
+            <Header />
+            <Sidebar />
             {children}
         </main>
     )

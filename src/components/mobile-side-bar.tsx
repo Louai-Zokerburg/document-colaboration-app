@@ -5,14 +5,13 @@ import {
     SheetContent,
     SheetTrigger,
 } from "@/components/ui/sheet"
-
 import { Button } from '@/components/ui/button'
 
 import { IoMdMenu } from 'react-icons/io'
 
 import SidebarContent from './sidebar-content'
 
-const MobileSidebar = ({ docs, currentProfile }: { docs: any, currentProfile: any }) => {
+const MobileSidebar = () => {
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -22,7 +21,7 @@ const MobileSidebar = ({ docs, currentProfile }: { docs: any, currentProfile: an
             </SheetTrigger>
             <SheetContent side='left' className='w-[300px] items-start p-4 pt-12'>
 
-                <SidebarContent docs={docs} currentProfile={currentProfile} />
+                <SidebarContent />
             </SheetContent>
         </Sheet>
     )
