@@ -13,7 +13,7 @@ export function Avatars() {
   const currentUser = useSelf();
 
   return (
-    <div className={`flex px-3`}>
+    <div className={`flex`}>
       {users.map(({ connectionId, info }) => (
         <Avatar key={connectionId} name={info.name} />
       ))}
@@ -37,7 +37,7 @@ export function Avatar({ name }: { name: string }) {
             {userInitials}
           </span>
         </TooltipTrigger>
-        <TooltipContent align="center">
+        <TooltipContent align="center" side="bottom">
           <p>{name}</p>
         </TooltipContent>
       </Tooltip>
