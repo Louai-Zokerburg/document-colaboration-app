@@ -60,7 +60,7 @@ export function ToolbarHeadings({ editor }: Props) {
           <SelectLabel>Headings</SelectLabel>
           {
             toolbarHeadings.map(heading => (
-              <SelectItem value={heading.value}>{heading.title}</SelectItem>
+              <SelectItem key={heading.value} value={heading.value}>{heading.title}</SelectItem>
             ))
           }
         </SelectGroup>
