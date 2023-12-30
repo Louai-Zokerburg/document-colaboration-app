@@ -19,11 +19,11 @@ export function Avatars() {
       ))}
 
       {currentUser && (
-        <div className={`relative ml-8 first:ml-0`}>
+        // <div className={`relative ml-8 first:ml-0`}>
           <Avatar
             name={currentUser.info.name}
           />
-        </div>
+        // </div>
       )}
     </div>
   );

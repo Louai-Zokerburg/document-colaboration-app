@@ -2,7 +2,6 @@ import React from 'react'
 import UserProfileBtn from './user-profile-btn'
 import Logo from './logo'
 import MobileSidebar from './mobile-side-bar';
-// import { Avatars } from './avatars';
 
 const Header = () => {
 
@@ -16,9 +15,8 @@ const Header = () => {
 
       <div>
 
-        {/* <Avatars  /> */}
 
-      <UserProfileBtn  />
+        <UserProfileBtn />
       </div>
     </header>
   )

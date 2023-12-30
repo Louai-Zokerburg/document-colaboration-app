@@ -15,8 +15,9 @@ import * as Y from "yjs";
 import { useRoom, useSelf } from "@/liveblocks.config";
 import { SelectionMenu } from "./selection-menu";
 import { Toolbar } from "./toolbar";
-import { Avatars } from "@/components/avatars";
+import { Avatars } from "../Avatars.1";
 import { Loading } from "@/components/loading";
+
 
 export function TextEditor() {
   return (
@@ -135,6 +136,7 @@ function TiptapEditor({ doc, provider }: EditorProps) {
         {editor && <Toolbar editor={editor} />}
         <Avatars />
       </div>
+
       <div className='flex-1 overflow-y-scroll px-4'>
         {editor && <SelectionMenu editor={editor} />}
         <EditorContent editor={editor} className='relative min-h-full w-full max-w-[800px] my-4 mx-auto border bg-background rounded-lg' />

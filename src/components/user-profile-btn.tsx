@@ -1,4 +1,3 @@
-
 import {
     Popover,
     PopoverContent,
@@ -10,10 +9,11 @@ import SignOutBtn from "./sign-out-btn"
 
 import { getUserFromServer } from "@/lib/fetchers"
 
-
 const UserProfileBtn = async () => {
 
+
     const user = await getUserFromServer()
+
 
     const userInitials = user?.name.toUpperCase().slice(0, 2)
 
