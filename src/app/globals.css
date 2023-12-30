@@ -54,100 +54,6 @@
 }
 
 
-/* @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 142.1 76.2% 36.3%;
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 0 0% 95%;
-    --card: 24 9.8% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 9%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 142.1 70.6% 45.3%;
-    --primary-foreground: 144.9 80.4% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142.4 71.8% 29.2%;
-  }
-} */
-
-/* @layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9;
-  }
-} */
-
 @layer base {
   * {
     @apply border-border;
@@ -157,3 +63,199 @@
   }
 
 }
+
+/* Placeholder in first line */
+p.tiptap-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap-paragraph {
+  margin: 1rem 0;
+}
+
+.tiptap-hr {
+  margin: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Heading styles below */
+h1.tiptap-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h2.tiptap-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3.tiptap-heading {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h1.tiptap-heading:first-child, h2.tiptap-heading:first-child, h3.tiptap-heading:first-child {
+  margin-top: 0;
+}
+
+h1.tiptap-heading + h2.tiptap-heading,
+h1.tiptap-heading + h3.tiptap-heading,
+h2.tiptap-heading + h1.tiptap-heading,
+h2.tiptap-heading + h3.tiptap-heading,
+h3.tiptap-heading + h1.tiptap-heading,
+h3.tiptap-heading + h2.tiptap-heading {
+  margin-top: 0;
+}
+
+/* Advanced inline styles below */
+.tiptap-code {
+  font-size: 1.2em;
+  line-height: 1em;
+  background: #e6e6e6;
+  border-radius: 0.3rem;
+  font-weight: 400;
+  padding: 0 0.25rem;
+}
+
+h1 .tiptap-code, h2 .tiptap-code, h3 .tiptap-code {
+  font-size: 1em;
+}
+
+.tiptap-highlight {
+  background: yellow;
+}
+
+.tiptap-link {
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Block styles below */
+.tiptap-blockquote {
+  margin-left: 1rem;
+  padding-left: 1rem;
+  display: block;
+  border-left: 0.25rem solid var(--border)
+}
+
+.tiptap-list-item p {
+  margin: 0.25rem 0;
+}
+
+.tiptap-list-item {
+  margin-left: 2rem;
+  padding-left: 0.25rem;
+  list-style: disc;
+}
+
+.tiptap-list-item .tiptap-list-item,
+.tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item {
+  margin-left: 1rem;
+  list-style: circle;
+}
+
+.tiptap-list-item .tiptap-list-item .tiptap-list-item,
+.tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item {
+  list-style: square;
+}
+
+.tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item,
+.tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item {
+  list-style: disc;
+}
+
+.tiptap-ordered-list .tiptap-list-item {
+  list-style: decimal;
+}
+
+.tiptap-ordered-list .tiptap-list-item .tiptap-list-item,
+.tiptap-ordered-list .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item {
+  list-style: lower-alpha;
+}
+
+.tiptap-ordered-list .tiptap-list-item .tiptap-list-item .tiptap-list-item,
+.tiptap-ordered-list .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item {
+  list-style: lower-roman;
+}
+
+.tiptap-ordered-list .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item,
+.tiptap-ordered-list .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item .tiptap-list-item {
+  list-style: decimal;
+}
+
+.tiptap-task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tiptap-task-list p {
+  margin: 0;
+}
+
+/* Styling for task item in /components/TextEditor/CustomTaskItem */
+
+/* Media blocks below */
+.tiptap-code-block {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre;
+  background: #797979;
+  color: #ececec;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  margin: 1rem 0;
+}
+
+.tiptap-image, .tiptap-youtube {
+  margin: 1rem 0;
+}
+
+.tiptap-image.ProseMirror-selectednode, .tiptap-youtube.ProseMirror-selectednode {
+  outline: 1.5px solid var(--accent);
+}
+
+.tiptap-youtube {
+  border: 0;
+}
+
+/* Give a remote user a caret */
+.collaboration-cursor__caret {
+  border-left: 1px solid #0d0d0d;
+  border-right: 1px solid #0d0d0d;
+  margin-left: -1px;
+  margin-right: -1px;
+  pointer-events: none;
+  position: relative;
+  word-break: normal;
+}
+
+/* Render the username above the caret */
+.collaboration-cursor__label {
+  font-style: normal;
+  font-weight: 600;
+  left: -1px;
+  line-height: normal;
+  position: absolute;
+  user-select: none;
+  white-space: nowrap;
+  font-size: 14px;
+  color: #fff;
+  top: -1.4em;
+  border-radius: 6px;
+  border-bottom-left-radius: 0;
+  padding: 2px 6px;
+  pointer-events: none;
+}
+

@@ -14,7 +14,6 @@ export async function getSessionFromServer() {
 
   return session;
 }
-
 export async function getDocFromServer() {
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
