@@ -15,13 +15,12 @@ export function Avatars() {
   return (
     <div className={`flex px-3`}>
       {users.map(({ connectionId, info }) => (
-        <Avatar key={connectionId} picture={info.picture} name={info.name} />
+        <Avatar key={connectionId} name={info.name} />
       ))}
 
       {currentUser && (
         <div className={`relative ml-8 first:ml-0`}>
           <Avatar
-            picture={currentUser.info.picture}
             name={currentUser.info.name}
           />
         </div>
@@ -30,7 +29,7 @@ export function Avatars() {
   );
 }
 
-export function Avatar({ picture, name }: { picture: string; name: string }) {
+export function Avatar({ name }: { name: string }) {
   const userInitials = name.toUpperCase().slice(0, 2)
   return (
     <TooltipProvider>
@@ -40,7 +39,7 @@ export function Avatar({ picture, name }: { picture: string; name: string }) {
             {userInitials}
           </span>
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent align="center">
           <p>{name}</p>
         </TooltipContent>
       </Tooltip>

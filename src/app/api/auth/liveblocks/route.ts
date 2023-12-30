@@ -1,3 +1,4 @@
+import { getUserFromServer } from "@/lib/fetchers";
 import { Liveblocks } from "@liveblocks/node";
 import { NextRequest } from "next/server";
 
@@ -12,12 +13,13 @@ const liveblocks = new Liveblocks({
 
 export async function POST(request: NextRequest) {
   // Get the current user's unique id from your database
-  const userId = Math.floor(Math.random() * 10) % USER_INFO.length;
+  // const userId = Math.floor(Math.random() * 10) % USER_INFO.length;
+  const user = await getUserFromServer();
 
   // Create a session for the current user
   // userInfo is made available in Liveblocks presence hooks, e.g. useOthers
-  const session = liveblocks.prepareSession(`user-${userId}`, {
-    userInfo: USER_INFO[userId],
+  const session = liveblocks.prepareSession(`user-${user?.id}`, {
+    userInfo: user!,
   });
 
   // Give the user access to the room
