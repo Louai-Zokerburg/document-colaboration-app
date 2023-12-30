@@ -15,7 +15,7 @@ import * as Y from "yjs";
 import { useRoom, useSelf } from "@/liveblocks.config";
 import { SelectionMenu } from "./selection-menu";
 import { Toolbar } from "./toolbar";
-import { Avatars } from "../Avatars.1";
+import { Avatars } from "../avatars";
 import { Loading } from "@/components/loading";
 
 
@@ -37,8 +37,6 @@ export function Editor() {
   useEffect(() => {
     const yDoc = new Y.Doc();
     const yProvider = new LiveblocksProvider(room, yDoc);
-    console.log("yProvider", yProvider);
-    console.log("yDoc", yDoc);
 
     setDoc(yDoc);
     setProvider(yProvider);

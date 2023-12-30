@@ -15,8 +15,7 @@ const DocsLayout = async ({ children }: { children: React.ReactNode }) => {
 
     return (
         <main>
-<Header />
-
+            <Header />
             <Sidebar />
             {children}
         </main>

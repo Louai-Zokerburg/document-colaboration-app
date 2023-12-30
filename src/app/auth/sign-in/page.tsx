@@ -23,7 +23,7 @@ const SigninPage = () => {
 export default SigninPage;
 
 
-
+// sign with github compoenet removed 
 {/* 
     <div className="w-full flex justify-between items-center my-2">
         <span className="h-[2px] bg-accent w-[40%]"></span>

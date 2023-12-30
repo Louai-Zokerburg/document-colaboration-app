@@ -12,7 +12,7 @@ export async function createDocument(state: any, formData: FormData) {
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
-  const { data, error } = await supabase.from('docs').insert([
+  const { error } = await supabase.from('docs').insert([
     {
       creator_id: creatorId,
       title,

@@ -1,9 +1,7 @@
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs';
-import { NextResponse, NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
 export async function middleware(req: NextRequest) {
-  const requestUrl = new URL(req.url);
-
   // instantiate a new NextResponse instance.
   const res = NextResponse.next();
 
@@ -12,7 +10,6 @@ export async function middleware(req: NextRequest) {
 
   // Refresh session if expired - required for Server Components
   await supabase.auth.getSession();
-
 
   // Returnin the new response
   return res;

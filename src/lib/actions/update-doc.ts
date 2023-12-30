@@ -14,7 +14,7 @@ export async function updateDocument(state: any, formData: FormData) {
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
-  const {data, error} = await supabase
+  const {error} = await supabase
         .from('docs')
         .update(
             {

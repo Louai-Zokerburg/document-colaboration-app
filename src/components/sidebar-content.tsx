@@ -11,12 +11,12 @@ import DocsList from './docs-list'
 
 import { Docuemnt } from "@/global";
 
-import { getDocFromServer, getUserFromServer } from "@/lib/fetchers"
+import { getDocsFromServer, getUserFromServer } from "@/lib/fetchers"
 
 import { FaPlus } from 'react-icons/fa'
 
 const SidebarContent = async () => {
-    const docs = await getDocFromServer()
+    const docs = await getDocsFromServer()
     const user = await getUserFromServer()
 
     const myDocs = docs.filter((doc: Docuemnt) => doc.creator_id === user?.id)

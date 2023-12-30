@@ -50,14 +50,6 @@ export function ToolbarHeadings({ editor }: Props) {
   );
 
   return (
-    // <Select
-    //   variant="subtle"
-    //   className={styles.headingsSelect}
-    //   value={getCurrentHeading(editor)}
-    //   initialValue={toolbarHeadings[0].value}
-    //   items={toolbarHeadings}
-    //   onChange={onHeadingChange}
-    // />
 
     <Select value={getCurrentHeading(editor)} onValueChange={onHeadingChange} >
       <SelectTrigger className="w-[140px]">

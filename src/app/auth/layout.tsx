@@ -15,8 +15,6 @@ const AuthLayout = async ({ children }: { children: React.ReactNode }) => {
         return redirect('/docs')
     }
 
-    
-
     return (
         <main className='w-full h-screen flex justify-center items-center'>
             <section className='w-full px-4 lg:w-1/2 flex justify-center items-center'>

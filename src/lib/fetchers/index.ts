@@ -2,6 +2,7 @@ import { User } from '@/global';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 
+// gets user session from suaabase auth
 export async function getSessionFromServer() {
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
@@ -14,7 +15,9 @@ export async function getSessionFromServer() {
 
   return session;
 }
-export async function getDocFromServer() {
+
+// All documents from supabase docs table
+export async function getDocsFromServer() {
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
     cookies: () => cookieStore,
@@ -25,6 +28,7 @@ export async function getDocFromServer() {
   return docs || [];
 }
 
+// Gets user from supabase users table
 export async function getUserFromServer() {
   const cookieStore = cookies();
   const supabase = createServerComponentClient<Database>({
@@ -35,7 +39,7 @@ export async function getUserFromServer() {
     data: { user: authUser },
   } = await supabase.auth.getUser();
 
-  if (!authUser) return null
+  if (!authUser) return null;
 
   const { data: user } = await supabase
     .from('users')
