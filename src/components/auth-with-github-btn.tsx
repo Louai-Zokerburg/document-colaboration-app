@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { FaGithub } from "react-icons/fa"
 
-import Loader from "./Loader"
 
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 
@@ -25,7 +24,7 @@ const AuthWithGithubBtn = () => {
 
         if (res.error) {
             setIsLoading(false)
-            
+
         }
 
         setIsLoading(false)
@@ -34,7 +33,7 @@ const AuthWithGithubBtn = () => {
     return (
         <Button className="w-full gap-x-4" variant='outline' onClick={handleAuthWithGithub}>
             {
-                isLoading ? (<Loader />) : (<FaGithub size={24} />)
+                isLoading ? ('loading...') : (<FaGithub size={24} />)
             }
 
             Sign Up With GitHub
